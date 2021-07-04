@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Checking if username is root
+if [ $EUID -ne 0 ]; then
+   	echo "This script must be run as root!" 
+   	exit
+fi
+
+# Checking if username is empty        
+        while [[ -z $username ]]
+                do
+                echo ""
+                read -p "Enter username: " username
+                done
+
+# Checking if user exists
+        egrep "^$username" /etc/passwd >/dev/null
+        if [ $? -eq 0 ]; then
+                echo ""
+                echo "$username exists!"
+                exit 1
+        fi
+
+# Checking if password is empty
+                while [[ -z $password ]]
+                        do
+                        echo ""
+                        read -s -p "Enter password: " password
+                        done
+# Creating new user
+                pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+                useradd --create-home -k -U --shell /bin/bash "$username"
+                echo ""
+                [ $? -eq 0 ] && echo "" && echo "User has been added to system!" || echo "Failed to add a user!"

@@ -1,0 +1,29 @@
+#!/bin/bash
+ min=$1
+ sec=0
+
+# Checking if argument is empty
+ if [ -z $1 ]; then
+         echo "No argument was entered."
+         exit
+
+# Checking for more than one argument
+  elif [ "$#" -ne 1 ]; then
+         echo "Only one argument required to run the script."
+         exit
+ fi        
+ # Counting minutes
+                 while [ $min -ge 0 ]; do
+
+# Counting seconds
+                         while [ $sec -ge 0 ]; do
+                                 sum=$(($min*60+$sec))
+                                 echo "There are $sum seconds remaining."
+                                 sec=$((sec-1))
+                                 sleep 1
+                         done
+                         sec=59
+                         min=$((min-1))
+                 done
+ echo “The time is over!”
+ exit
