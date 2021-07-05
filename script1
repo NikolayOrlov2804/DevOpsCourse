@@ -7,6 +7,8 @@
          echo "No argument was entered."
          exit
 
+#TEST EDIT - NEW LINE
+
 # Checking for more than one argument
   elif [ "$#" -ne 1 ]; then
          echo "Only one argument required to run the script."
