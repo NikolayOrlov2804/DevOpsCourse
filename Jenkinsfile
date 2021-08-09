@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage ('BuildImage') {
             steps {
-              sh 'sudo docker ps'
+              sh '''sudo docker ps'''
             }
         }
    }    
