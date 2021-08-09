@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage ('BuildImage') {
             steps {
-              sh '''sudo docker ps'''
+              docker.image($(NAME)).withRun('-p 8888:80')
             }
         }
    }    
