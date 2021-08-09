@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage ('BuildImage') {
             steps {
-              docker.image($(NAME)).withRun('-p 8888:80')
+              echo "Finish"
             }
         }
    }    
