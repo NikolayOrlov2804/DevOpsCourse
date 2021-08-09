@@ -1,11 +1,20 @@
 pipeline {
     agent { dockerfile true }
+    parameters {
+        string (name: 'NAME', defaultValue: 'mypage', description: 'Please wtite your image name')
+    }
+    environment {
+        NAME = 'mypage'
+    }
     stages {
-        stage('Test') {
+        stage ('BuildImage') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+              sh '''
+                docker build -t ${NAME} .
+                docker run -it --rm -d -p 8888:80 --name ${WEB} ${NAME}
+
+              '''
             }
         }
-    }
+   }    
 }
