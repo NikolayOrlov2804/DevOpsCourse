@@ -11,7 +11,7 @@ pipeline {
             steps {
               sh '''
                 docker build -t ${NAME} .
-                docker run -it --rm -d -p 8888:80 --name ${WEB} ${NAME}
+                docker run -d -p 8888:80 ${NAME}
 
               '''
             }
