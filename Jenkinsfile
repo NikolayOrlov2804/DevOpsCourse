@@ -8,9 +8,13 @@ pipeline {
     }
     stages {
         stage ('BuildImage') {
+            agent {         
+               docker {          
+                  docker.image('876d21596a72').withRun('-p 8888:80')        
+            }             
+            
             steps {
-                docker.image('876d21596a72').withRun('-p 8888:80 ')
-                echo "Finish"            
+                  echo "Finish"            
             }
         }
    }    
