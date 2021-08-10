@@ -1,7 +1,5 @@
 pipeline {
-    agent { dockerfile true         
-            label 'custom'        
-    }
+    agent {dockerfile true}              
     parameters {
         string (name: 'LABEL', defaultValue: 'mypage', description: 'Please wtite your image name')
     }
