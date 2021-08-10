@@ -1,14 +1,14 @@
 pipeline {
     agent {dockerfile {
              filename 'Dockerfile'
-             label 'my-defined-label'
+             label ${LABEL}
            }
     }       
     parameters {
-        string (name: 'LABEL', defaultValue: 'mypage', description: 'Please wtite your label name')
+        string (name: 'LABEL', defaultValue: 'mylabel', description: 'Please wtite your label name')
     }
     environment {
-        NAME = 'mylabel'
+        LABEL = 'mylabel'
     }
     stages {
         stage ('RunImage') {
