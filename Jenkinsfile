@@ -1,7 +1,8 @@
 pipeline {
     agent {dockerfile {
-        filename 'Dockerfile'
-        label 'my-defined-label'
+             filename 'Dockerfile'
+             label 'my-defined-label'
+           }
     }       
     parameters {
         string (name: 'LABEL', defaultValue: 'mypage', description: 'Please wtite your label name')
