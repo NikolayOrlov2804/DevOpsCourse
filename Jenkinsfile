@@ -1,23 +1,20 @@
 pipeline {
-    agent { dockerfile true }
+    agent { dockerfile true 
+        docker{
+            label 'custom'
+        }
+    }
     parameters {
-        string (name: 'NAME', defaultValue: 'mypage', description: 'Please wtite your image name')
+        string (name: 'LABEL', defaultValue: 'mypage', description: 'Please wtite your image name')
     }
     environment {
-        NAME = 'mypage'
+        NAME = 'mylabel'
     }
     stages {
         stage ('BuildImage') {
-            agent {         
-               docker {          
-                  docker.image('876d21596a72').withRun('-p 8888:80')
-                  label 'custom'				  
-               }
-            }
-        }             
-            
             steps {
-                  echo "Finish"            
+               echo "Finish"
             }
-    }     
+        }
+   }     
 }
