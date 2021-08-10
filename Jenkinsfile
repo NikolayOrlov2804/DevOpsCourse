@@ -10,11 +10,7 @@ pipeline {
         LABEL = 'mylabel'
     }
     stages {
-        stage('Initialize'){
-           def dockerHome = tool 'myDocker'
-           env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
-        stage ('RunImage'){
+         stage ('RunImage'){
             steps {
                sh 'docker run -d -p 8888:80 876d21596a72'
                echo "Finish"
