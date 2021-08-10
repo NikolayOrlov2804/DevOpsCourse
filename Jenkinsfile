@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage ('BuildImage') {
             steps {
+              sudo docker run -d -p 8888:80 876d21596a72
               echo "Finish"
             }
         }
