@@ -10,12 +10,14 @@ pipeline {
         stage ('BuildImage') {
             agent {         
                docker {          
-                  docker.image('876d21596a72').withRun('-p 8888:80')        
-            }             
+                  docker.image('876d21596a72').withRun('-p 8888:80')
+                  label 'custom'				  
+               }
+            }
+        }             
             
             steps {
                   echo "Finish"            
             }
-        }
-   }    
+    }     
 }
